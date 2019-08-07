@@ -1,0 +1,7 @@
+#!/bin/bash
+clear
+echo "WOL"
+read -p "MAC Target: " mact
+echo "WOL MAC target: "$mact
+echo "Current MAC target: "$mact
+wol -h $mact

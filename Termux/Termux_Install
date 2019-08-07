@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "Termux Install Package"
+read -p "Package name: " package
+echo
+echo "Installing" $package
+echo
+pkg install $package -y
+echo
+echo $package "installed!"
+echo
+read -p "[Press ENTER key to exit]"

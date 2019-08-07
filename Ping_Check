@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "PING CHECK"
+ipt="google.com"
+read -p "IP target: " ipt
+ipt=${input:-$ipt}
+echo "PING CHECK TARGET ["$ipt"]"
+echo
+ping -c 10 $ipt
+echo
+echo "PING CHECK ["$ipt"] ...done!"
+echo
+read -p "[Press ENTER key to exit]"

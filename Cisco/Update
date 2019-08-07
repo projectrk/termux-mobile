@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Cisco Update"
+cd ~/git/cisco
+git pull gcisco master
+rm ~/scripts/Cisco/Cisco_*
+cp ~/git/cisco/Cisco_* ~/scripts/Cisco/
+echo "Cisco Update... Done"
+read -p "Press ENTER key to exit"

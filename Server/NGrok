@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "SSH connect to Ubuntu Server"
+read -p 'Enter Port: ' port
+echo "Connecting to Port: $port"
+ssh rk@0.tcp.ngrok.io -p $port

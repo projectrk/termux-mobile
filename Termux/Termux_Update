@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "Updating Termux"
+echo
+echo "Performing repo update"
+echo
+pkg update -y
+apt-get update
+echo
+echo "Performing package upgrade"
+echo
+pkg upgrade -y
+apt-get upgrade -y
+echo
+read -p "[Press ENTER key to exit]"

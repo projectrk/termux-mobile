@@ -1,0 +1,46 @@
+#!/bin/bash
+echo "Cisco NAT Configuration"
+echo
+echo "WAN Configuration"
+read -p 'WAN Interface: ' wanif
+read -p 'WAN IP: ' wanip
+read -p 'WAN MASK: ' wansn
+echo
+echo "LAN Configuration"
+read -p 'LAN Interface: ' lanif
+read -p 'LAN IP: ' lanip
+read -p 'LAN MASK: ' lansn
+echo
+read -p 'NAT Pool Name: ' natpname
+echo "
+[SOF]
+
+conf t
+en
+hostname NAT-R
+int $wanif
+ ip address $wanip $wansn
+ no shut
+ ip nat outside
+int $lanif
+ ip address $lanip $lansn
+ no shut
+ ip nat inside
+exit
+!
+ip nat pool $natpname $wanip $wanip netmask $wansn
+access-list 1 permit $lanip 0.0.0.255
+ip nat outside source list 1 pool $natpname overload
+end
+wr
+!
+
+[EOF]
+"
+printf "
+!!! NAT pool name is case sensitive
+* WAN is mostly the NAT outside - Internet facing
+* LAN is mostly the NAT inside - Local facing
+"
+echo
+read -p '[Press ENTER key to exit]'

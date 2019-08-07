@@ -1,0 +1,11 @@
+#!/bin/bash
+clear
+echo "Cisco Init Configuration"
+printf "SOF\n
+en
+conf t
+end
+wr
+
+EOF\n"
+

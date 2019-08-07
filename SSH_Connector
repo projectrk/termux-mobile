@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "SSH Connector"
+read -p "Server IP: " sip
+read -p "Server Port: " sport
+sip=${input:-"127.0.0.1"}
+sport=${input:-"22"}
+echo "Server IP ["$sip"] Port ["$sport"]"
+ssh rk@$sip -p $sport
+sleep 3

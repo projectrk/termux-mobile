@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Hanzo Hattori appeared in the shadow"
+echo
+msfconsole
+clear
+read -p "Hanzo Hattori is nowhere to be found!"

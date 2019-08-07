@@ -1,0 +1,40 @@
+#!/bin/bash
+echo "Cisco NAT Configuration"
+echo
+echo "WAN Configuration"
+read -p 'WAN Interface: ' wanif
+read -p 'WAN IP: ' wanip
+read -p 'WAN MASK: ' wansn
+echo
+echo "LAN Configuration"
+read -p 'LAN Interface: ' lanif
+read -p 'LAN IP: ' lanip
+read -p 'LAN MASK: ' lansn
+echo
+echo "
+[SOF]
+
+conf t
+en
+hostname RIP-R
+int $wanif
+ ip address $wanip $wansn
+ no shut
+int $lanif
+ ip address $lanip $lansn
+ no shut
+exit
+!
+router rip
+ ver 2
+ network $wanip
+ network $lanip
+ no auto-summary 
+end
+wr
+!
+
+[EOF]
+"
+echo
+read -p '[Press ENTER key to exit]'
